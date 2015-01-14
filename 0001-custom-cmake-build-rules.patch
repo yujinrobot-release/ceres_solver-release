@@ -1,0 +1,27 @@
+From 0516779c6d752f3f9aff5c1280bc66a1c05e9b21 Mon Sep 17 00:00:00 2001
+From: Daniel Stonier <d.stonier@gmail.com>
+Date: Wed, 14 Jan 2015 12:18:34 +0900
+Subject: [PATCH] custom cmake build rules
+
+---
+ debian/rules.em | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/debian/rules.em b/debian/rules.em
+index 991c991..e34f1e7 100755
+--- a/debian/rules.em
++++ b/debian/rules.em
+@@ -30,7 +30,9 @@ override_dh_auto_configure:
+ 	dh_auto_configure -- \
+ 		-DCATKIN_BUILD_BINARY_PACKAGE="1" \
+ 		-DCMAKE_INSTALL_PREFIX="@(InstallationPrefix)" \
+-		-DCMAKE_PREFIX_PATH="@(InstallationPrefix)"
++		-DCMAKE_PREFIX_PATH="@(InstallationPrefix)" \
++		-DCXSPARSE_INCLUDE_DIR=/usr/include/suitesparse \
++		-DBUILD_SHARED_LIBS=ON
+ 
+ override_dh_auto_build:
+ 	# In case we're installing to a non-standard location, look for a setup.sh
+-- 
+1.9.1
+
